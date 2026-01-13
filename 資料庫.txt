@@ -1,0 +1,98 @@
+-- 1. 建立使用者表 
+CREATE TABLE Users ( uid NVARCHAR(10) PRIMARY KEY, name NVARCHAR(100) NOT NULL, email NVARCHAR(100) UNIQUE NOT NULL, password_hash NVARCHAR(255) NOT NULL, phone NVARCHAR(20), balance DECIMAL(15, 2) DEFAULT 0.00,
+CREATE TABLE dbo.Commission (
+    commission_id INT IDENTITY(1,1) PRIMARY KEY,
+    creator_id nvarchar(50) NULL,
+    title NVARCHAR(255) NULL,
+    image_url NVARCHAR(MAX) NULL,
+    description NVARCHAR(MAX) NULL,
+    price DECIMAL(15,2) NULL,
+    quantity INT NULL,
+    category NVARCHAR(50) NULL,
+    location NVARCHAR(255) NULL,
+    deadline DATETIME NULL,
+    created_at DATETIME NULL,
+    UpdatedAt DATETIME NULL,
+    status NVARCHAR(15) NOT NULL 
+        DEFAULT N'未審核'
+        CHECK (status IN (
+            N'審核中',
+            N'審核失敗',
+            N'待接單',
+            N'已接單',
+            N'出貨中',
+            N'已寄出',
+            N'已完成',
+            N'cancelled'
+        )),
+    escrowAmount DECIMAL(18,2) NULL,
+    fee DECIMAL(18,2) NULL,
+    fail_count INT NULL
+);
+--Commission的creator_id FK到 Users的uid
+ALTER TABLE dbo.Commission
+ADD CONSTRAINT FK_Commission_Users_Creator
+FOREIGN KEY (creator_id)
+===========history=================
+CREATE TABLE dbo.CommissionHistory (
+    history_id INT IDENTITY(1,1) PRIMARY KEY,
+    commission_id INT NOT NULL,
+    action NVARCHAR(50) NOT NULL,		--發生了什麼操作
+    changed_by NVARCHAR(50) NULL,
+    changed_at DATETIME NOT NULL DEFAULT GETDATE(),
+    old_data NVARCHAR(MAX) NULL,
+    new_data NVARCHAR(MAX) NULL,
+    CONSTRAINT FK_CommissionHistory_Commission
+        FOREIGN KEY (commission_id)
+        REFERENCES dbo.Commission(commission_id)
+);
+
+===========CommissionOrder=================
+CREATE TABLE CommissionOrder (
+    order_id INT IDENTITY(1,1) PRIMARY KEY,
+    commission_id INT NOT NULL,
+    status NVARCHAR(20) NOT NULL
+        CHECK (status IN (N'PENDING', N'COMPLETED', N'CANCELLED')),
+    amount DECIMAL(18,2) NOT NULL,
+    buyer_id NVARCHAR(50) NOT NULL,
+    seller_id NVARCHAR(50) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT GETDATE(),
+    finished_at DATETIME NULL,
+    CONSTRAINT FK_Order_Commission
+        FOREIGN KEY (commission_id)
+        REFERENCES dbo.Commission(commission_id)
+);
+=================CommissionReceipt============收據圖片
+CREATE TABLE dbo.CommissionReceipt (
+    receipt_id INT IDENTITY(1,1) PRIMARY KEY,
+    commission_id INT NOT NULL,
+    uploaded_by NVARCHAR(50) NOT NULL,                                -- 上傳者（通常是接單者）
+    receipt_image_url NVARCHAR(MAX) NOT NULL,
+    receipt_amount DECIMAL(18,2) NULL,                                      -- 收據金額（如果未來有審核 可以看賣家實際花費 對比委託金額 也防止上傳假圖片)
+    receipt_date DATETIME NULL,                                                     -- 收據上的日期(用來查看 收據日期早於接單時間  怕有疑慮)
+    uploaded_at DATETIME NOT NULL DEFAULT GETDATE(),
+    remark NVARCHAR(500) NULL,                                                  --前端給欄位讓賣家說明(是否明細額外遇到什麼狀況，分兩筆購買，先上第一張，還是沒有紙本收據..等等)
+					                --商品缺貨 → 分兩家買
+    CONSTRAINT FK_Receipt_Commission
+        FOREIGN KEY (commission_id)
+        REFERENCES dbo.Commission(commission_id)
+);
+
+
+==========================================寄貨
+CREATE TABLE dbo.CommissionShipping (
+    shipping_id INT IDENTITY(1,1) PRIMARY KEY,   			-- 寄貨ID
+    commission_id INT NOT NULL,                 			-- 對應的委託
+    status NVARCHAR(10) NOT NULL
+        CHECK (status IN (N'未寄出', N'已寄出')),
+    shipped_at DATETIME NULL,               				-- 按「已寄出」的時間
+    shipped_by NVARCHAR(50) NOT NULL,     			-- 哪個使用者按的
+   logistics_name NVARCHAR(50) NULL,      -- 郵局 / 7-11 / 黑貓 /蝦皮 /面交 等等寄送方式 紀錄(避免爭議 買家若沒收到 也有地方可以驗證有寄貨出)
+    tracking_number NVARCHAR(100) NULL,    -- 單號 可以是空
+    remark NVARCHAR(255) NULL;              -- 補充說明 備註（例如：面交 / 放管理室）
+);
+
+    CONSTRAINT FK_CommissionShipping_Commission
+        FOREIGN KEY (commission_id)
+        REFERENCES dbo.Commission(commission_id),
+);
