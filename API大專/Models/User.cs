@@ -20,4 +20,7 @@ public partial class User
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<Commission> Commissions { get; set; } = new List<Commission>();
+
+    public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
+
 }

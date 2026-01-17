@@ -25,10 +25,22 @@ public partial class ProxyContext : DbContext
 
     public virtual DbSet<CommissionShipping> CommissionShippings { get; set; }
 
-
+    public virtual DbSet<Notification> Notifications { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Notifica__3214EC0721135917");
+
+            entity.Property(e => e.IsRead).HasDefaultValue(false);
+            entity.Property(e => e.Title).HasMaxLength(100);
+            entity.Property(e => e.Uid).HasMaxLength(50);
+
+            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.Uid)
+                .HasConstraintName("FK_Notifications_Users");
+        });
         modelBuilder.Entity<Commission>(entity =>
         {
             entity.HasKey(e => e.CommissionId).HasName("PK__Commissi__D19D7CC9A721000E");

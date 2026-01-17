@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>委託單地區查詢測試</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #0056b3;
+            }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .category {
+            font-size: 12px;
+            color: #007bff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #dc3545;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-bar">
+        <input type="text" id="locInput" placeholder="請輸入地區關鍵字 (如：台中)" value="">
+
+        <select id="sortSelect" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd;">
+            <option value="">預設排序 (新到舊)</option>
+            <option value="price_asc">價格：由低到高</option>
+            <option value="price_desc">價格：由高到低</option>
+        </select>
+
+        <button onclick="doSearch()">搜尋</button>
+    </div>
+
+    <script>
+        async function doSearch() {
+            const loc = document.getElementById('locInput').value;
+            const sort = document.getElementById('sortSelect').value; // 取得排序值
+            const grid = document.getElementById('resultGrid');
+            const loader = document.getElementById('loading');
+
+            if (!loc) { alert("請輸入地區"); return; }
+
+            grid.innerHTML = '';
+            loader.style.display = 'block';
+
+            try {
+                // 將 sort 參數拼接到 URL 後面
+                const url = `api/filter/location/${encodeURIComponent(loc)}?sort=${sort}`;
+                const response = await fetch(url);
+
+                const result = await response.json();
+                loader.style.display = 'none';
+
+                if (result.success && result.data.length > 0) {
+                    result.data.forEach(item => {
+                        grid.innerHTML += `
+                        <div class="card">
+                            <img class="card-img" src="${item.imageUrl || 'https://via.placeholder.com/300x180?text=No+Image'}" alt="Image">
+                            <div class="card-body">
+                                <div class="category">${item.category}</div>
+                                <div class="title">${item.title}</div>
+                                <div class="price">$${item.price.toLocaleString()}</div>
+                                <div class="details">
+                                    📍 地點：${item.location}<br>
+                                    📦 數量：${item.quantity}<br>
+                                    📅 期限：${new Date(item.deadline).toLocaleDateString()}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    });
+                } else {
+                    grid.innerHTML = '<p>找不到該地區的待接單委託。</p>';
+                }
+            } catch (err) {
+                loader.style.display = 'none';
+                alert("API 呼叫失敗，請檢查網址或後端 Console");
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
