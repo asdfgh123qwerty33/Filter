@@ -11,6 +11,7 @@
         public string? Content { get; set; }
 
         public bool? IsRead { get; set; }
+        public DateTime SentAt { get; set; } = DateTime.Now;
 
         public virtual User User { get; set; } = null!;
     }
