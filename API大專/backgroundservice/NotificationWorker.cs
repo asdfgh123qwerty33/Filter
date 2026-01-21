@@ -53,8 +53,7 @@ public class NotificationWorker : BackgroundService
         return null;
     }
 
-    // 背景服務的核心執行邏輯
-    // 監聽邏輯寫在下面
+    // 背景服務(監聽邏輯)
     // stoppingToken 在網頁關閉時通知服務停止
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -71,10 +70,7 @@ public class NotificationWorker : BackgroundService
 
         // 保持此背景服務持續運行，直到網頁停止 (stoppingToken 被觸發)
         // 使用 Timeout.Infinite 讓此循環不消耗 CPU 資源地等待
-        while (!stoppingToken.IsCancellationRequested)
-        {
             await Task.Delay(Timeout.Infinite, stoppingToken);
-        }
         // 應用程式關閉時，停止 SQL 監聽
         SqlDependency.Stop(_connectionString);
     }
@@ -99,12 +95,13 @@ public class NotificationWorker : BackgroundService
                     {
                         // SqlDependency 是一次性的，一旦觸發後該監聽就會失效
                         // 移除舊的事件訂閱，防止重複觸發造成訊息重複
-                        SqlDependency dep = (SqlDependency)sender;
-                        dep.OnChange -= null;
+                        //SqlDependency dep = (SqlDependency)sender;
+                        //dep.OnChange -= null;
 
-                        // 判斷異動類型是否為資料變更 (如 INSERT)
+                        // 檢查資料是否變更
                         if (e.Type == SqlNotificationType.Change)
                         {
+                            Console.WriteLine("偵測到資料庫變動！");
                             // 偵測變更後，去資料庫抓取最新產生的那一筆通知
                             var latest = await GetLatestNotificationAsync();
                             if (latest != null)
@@ -119,6 +116,7 @@ public class NotificationWorker : BackgroundService
                             }
 
                             // 重要：監聽是一次性的，必須在觸發後重新註冊新的監聽
+                            await Task.Delay(1000);
                             await RegisterDependency();
                         }
                     };

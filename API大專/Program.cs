@@ -16,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 builder.Services.AddScoped<CommissionService>();
 
+// µù¥U NotificationWorker ¬°­I´ºªA°È
+builder.Services.AddHostedService<NotificationWorker>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
