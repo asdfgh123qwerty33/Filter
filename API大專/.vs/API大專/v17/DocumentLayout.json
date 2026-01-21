@@ -3,36 +3,12 @@
   "WorkspaceRootPath": "D:\\daigo_0113\\API\u5927\u5C08\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\models\\proxycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:models\\proxycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\controllers\\commissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:controllers\\commissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\controllers\\filtercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:controllers\\filtercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\backgroundservice\\notificationworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:backgroundservice\\notificationworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|d:\\daigo_0113\\api\u5927\u5C08\\models\\commission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC121CF2-FD35-7362-3ECD-8A137485CBFE}|API\u5927\u5C08.csproj|solutionrelative:models\\commission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,111 +18,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NotificationWorker.cs",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\backgroundservice\\NotificationWorker.cs",
-              "RelativeDocumentMoniker": "backgroundservice\\NotificationWorker.cs",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\backgroundservice\\NotificationWorker.cs",
-              "RelativeToolTip": "backgroundservice\\NotificationWorker.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAwwHQAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T06:10:26.451Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "FilterController.cs",
               "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Controllers\\FilterController.cs",
               "RelativeDocumentMoniker": "Controllers\\FilterController.cs",
               "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Controllers\\FilterController.cs",
               "RelativeToolTip": "Controllers\\FilterController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-20T07:52:41.557Z",
+              "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CommissionController.cs",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Controllers\\CommissionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CommissionController.cs",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Controllers\\CommissionController.cs",
-              "RelativeToolTip": "Controllers\\CommissionController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAIA8wEYAAAAjAAAAAAAAAA==",
+              "Title": "Commission.cs",
+              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\Commission.cs",
+              "RelativeDocumentMoniker": "Models\\Commission.cs",
+              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\Commission.cs",
+              "RelativeToolTip": "Models\\Commission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T07:20:16.059Z",
+              "WhenOpened": "2026-01-21T02:50:18.349Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProxyContext.cs",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\ProxyContext.cs",
-              "RelativeDocumentMoniker": "Models\\ProxyContext.cs",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\ProxyContext.cs",
-              "RelativeToolTip": "Models\\ProxyContext.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAqwCcAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T07:18:40.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\Notification.cs",
-              "RelativeDocumentMoniker": "Models\\Notification.cs",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Models\\Notification.cs",
-              "RelativeToolTip": "Models\\Notification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T07:17:03.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T06:40:14.31Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAwAgAAABgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-20T06:37:11.21Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "index.html",
-              "DocumentMoniker": "D:\\daigo_0113\\API\u5927\u5C08\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "wwwroot\\index.html",
-              "ToolTip": "D:\\daigo_0113\\API\u5927\u5C08\\wwwroot\\index.html",
-              "RelativeToolTip": "wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-01-20T06:35:38.063Z"
             }
           ]
         }
