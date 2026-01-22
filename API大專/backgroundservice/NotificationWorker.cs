@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.SignalR;
 // 確認 NuGet 有安裝 Microsoft.Data.SqlClient
 // 使用 Microsoft.Data.SqlClient 以支援 .NET Core/8 的 SQL 客戶端功能
 using Microsoft.Data.SqlClient;
-
+//// 安裝指令：Install-Package SqlTableDependency
+//// 安裝指令：Install-Package Microsoft.Data.SqlClient
 // 監控資料庫異動，並透過 SignalR 即時推播通知給前端
 // 繼承 BackgroundService 使其在應用程式啟動時自動於後台執行
 
